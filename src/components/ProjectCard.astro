@@ -1,0 +1,170 @@
+---
+// src/components/ProjectCard.astro
+
+interface Props {
+  title: string;
+  tags: string[];
+  description: string;
+  image: string;
+  link: string;
+}
+
+const { title, tags, description, image, link } = Astro.props;
+---
+
+<div class="project-item">
+  <a
+    href={link}
+    class="project-image-link"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <div class="project-image-wrapper">
+      <img src={image} alt={title} class="project-img" loading="lazy" />
+    </div>
+  </a>
+
+  <div class="project-info">
+    <div class="project-tags">
+      {
+        tags.map((tag, index) => (
+          <span>
+            {tag}
+            {index < tags.length - 1 ? " / " : ""}
+          </span>
+        ))
+      }
+    </div>
+
+    <h3 class="project-title">{title}</h3>
+    <p class="project-description">{description}</p>
+
+    <a
+      href={link}
+      class="btn-view-project"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      ver projeto
+    </a>
+  </div>
+</div>
+
+<style>
+  /* Estrutura Base do Item do Projeto */
+  .project-item {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+  }
+
+  .project-image-link {
+    flex: 1.1;
+    display: block;
+    text-decoration: none;
+  }
+
+  /* Container da Imagem com Borda Brutalista */
+  .project-image-wrapper {
+    border: 2.5px solid #000000;
+    background-color: #ffffff;
+    overflow: hidden;
+    line-height: 0;
+    box-shadow: 0px 0px 0px #000000;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  /* Efeito de elevação disparando corretamente */
+  .project-item:hover .project-image-wrapper,
+  .project-image-link:hover .project-image-wrapper {
+    transform: translate(-4px, -4px);
+    box-shadow: 6px 6px 0px #000000;
+  }
+
+  .project-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Informações do Projeto */
+  .project-info {
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Tags */
+  .project-tags {
+    background-color: #e0e0e0;
+    padding: 0.35rem 0.75rem;
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .project-title {
+    font-family: var(--font-main);
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .project-description {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #222222;
+    margin-bottom: 1.5rem;
+  }
+
+  /* O estilo do botão que tinha sumido */
+  .btn-view-project {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #000000;
+    text-decoration: none;
+    background-color: #fca100;
+    border: 2px solid #000000;
+    padding: 0.6rem 1.5rem;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .btn-view-project:hover {
+    transform: scale(1.04);
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  /* Responsividade */
+  @media (max-width: 850px) {
+    .project-item {
+      flex-direction: column !important;
+      gap: 2rem;
+    }
+
+    .project-image-link {
+      width: 100%;
+    }
+
+    .project-info {
+      align-items: center;
+      text-align: center;
+    }
+  }
+</style>

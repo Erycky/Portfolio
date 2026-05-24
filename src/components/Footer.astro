@@ -1,0 +1,180 @@
+---
+// src/components/Footer.astro
+---
+
+<footer class="footer-section">
+  <div class="footer-container">
+    <a href="mailto:eryckyrayner@gmail.com" class="footer-card">
+      <div class="icon-circle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="footer-icon"
+        >
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+      </div>
+      <p class="footer-text">
+        Email: <span class="text-light">eryckyrayner@gmail.com</span>
+      </p>
+    </a>
+
+    <a
+      href="https://wa.me/5551996247445"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-card"
+    >
+      <div class="icon-circle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="footer-icon"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+          ></path>
+        </svg>
+      </div>
+      <p class="footer-text">(51) 9 9624-7445</p>
+      <p class="footer-subtext">WhatsApp</p>
+    </a>
+
+    <div class="footer-card">
+      <div class="icon-circle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="footer-icon"
+        >
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      </div>
+      <div class="location-wrapper">
+        <p class="footer-text font-bold">Rio Grande do Sul</p>
+        <span class="footer-subtext">Santa Cruz do Sul</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-section {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 4rem 6rem 4rem; /* Mantém o alinhamento das seções de cima */
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas idênticas lado a lado */
+    gap: 2rem;
+    width: 100%;
+  }
+
+  /* Base do Card Preto Neobrutalista */
+  .footer-card {
+    background-color: #000000;
+    border: 3px solid #000000;
+    padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    text-decoration: none; /* Remove underline dos links */
+    color: #ffffff;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  /* Corrigido: Agora aplica o hover em TODOS os cards (tanto <a> quanto <div>) */
+  .footer-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 6px 6px 0px #000000; /* Sombra laranja de destaque */
+  }
+
+  /* Mantém o cursor padrão na div para indicar que ela não é clicável */
+  div.footer-card:hover {
+    cursor: default;
+  }
+
+  /* Círculo do Ícone Laranja Metódico */
+  .icon-circle {
+    background-color: var(--color-primary); /* Teu laranja #FCA100 */
+    color: #000000; /* Ícone preto interno */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Textos internos */
+  .location-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .footer-text {
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    font-weight: 800; /* Letra pesada idêntica à imagem */
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .footer-text .text-light {
+    font-weight: 600; /* Deixa o e-mail um pouquinho menos denso para legibilidade */
+  }
+
+  .footer-subtext {
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #aaaaaa;
+  }
+
+  /* Responsividade fluída para mobile e tablets */
+  @media (max-width: 968px) {
+    .footer-container {
+      grid-template-columns: 1fr; /* Empilha os blocos verticalmente */
+      gap: 1.5rem;
+    }
+
+    .footer-section {
+      padding: 0 2rem 4rem 2rem;
+    }
+
+    .footer-card {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+</style>

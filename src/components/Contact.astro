@@ -1,0 +1,210 @@
+---
+// src/components/Contact.astro
+---
+
+<section class="contact-section" id="contato">
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2>Vamos conversar</h2>
+      <p>Disponível para trabalhos, projetos e conversas...</p>
+    </div>
+
+    <div class="contact-content-wrapper">
+      <div class="side-arrow left-arrow" aria-hidden="true">
+        <span>&lt; &gt;</span>
+      </div>
+
+      <form class="contact-form" action="#" method="POST">
+        <div class="form-group">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Nome*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="Assunto*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Mensagem*"
+            required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit"> Enviar </button>
+      </form>
+
+      <div class="side-arrow right-arrow" aria-hidden="true">
+        <span>&lt; &gt;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 6rem 4rem 8rem 4rem; /* Margem inferior maior por ser o fim da página */
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  /* Cabeçalho igual à imagem */
+  .contact-header {
+    text-align: center;
+  }
+
+  .contact-header h2 {
+    font-family: var(--font-main);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-header p {
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333333;
+  }
+
+  /* Envoltório do Conteúdo (Flex para alinhar setas e form lado a lado) */
+  .contact-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    gap: 3rem;
+  }
+
+  /* Setas Laterais Laranjas Gigantes */
+  .side-arrow {
+    font-family: var(--font-main);
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--color-primary); /* Teu laranja #FCA100 */
+    user-select: none;
+    letter-spacing: -5px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Estrutura do Formulário Central */
+  .contact-form {
+    flex: 1;
+    max-width: 500px; /* Mantém o formulário compacto exatamente como no mockup */
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  /* Campos de Input e Textarea neobrutalistas */
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #000000;
+    background-color: #ffffff;
+    border: 2.5px solid #000000;
+    outline: none;
+    transition:
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  /* Placeholder preto e nítido conforme imagem */
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #000000;
+    opacity: 1;
+  }
+
+  /* Pequeno efeito de foco para guiar o usuário */
+  .form-group input:focus,
+  .form-group textarea:focus {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #000000;
+  }
+
+  /* Textarea sem resize feio para não quebrar o layout */
+  .form-group textarea {
+    resize: none;
+  }
+
+  /* Botão Enviar Marcante */
+  .btn-submit {
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #000000;
+    background-color: var(--color-primary); /* Laranja #FCA100 */
+    border: 2.5px solid #000000;
+    padding: 1rem;
+    cursor: pointer;
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
+  }
+
+  /* Clique com feedback mecânico pesado */
+  .btn-submit:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 5px 5px 0px #000000;
+  }
+
+  .btn-submit:active {
+    transform: translate(0, 0);
+    box-shadow: 0px 0px 0px #000000;
+  }
+
+  /* Responsividade para sumir com as setas em telas pequenas e não apertar o form */
+  @media (max-width: 768px) {
+    .side-arrow {
+      display: none; /* Esconde as setas laranjas no mobile/tablet para priorizar o input */
+    }
+
+    .contact-section {
+      padding: 4rem 2rem 6rem 2rem;
+    }
+
+    .contact-content-wrapper {
+      gap: 0;
+    }
+  }
+</style>

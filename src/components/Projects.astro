@@ -1,0 +1,84 @@
+---
+// src/components/Projects.astro
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = [
+  {
+    title: "Colégio Dom Alberto",
+    tags: ["HTML", "CSS", "JavaScript", "Astro"],
+    description:
+      "Site para Instituiçãod de ensino Colégio Dom Alberto, que após aquisição pelo grupo 2Elles necessitou expressar sua nova versão, assim realizando um re-design e comunicando melhor a nova gestão.",
+    image: "/images/colegio-dom-alberto.png",
+    link: "https://colegiodomalberto.com.br/",
+  },
+  {
+    title: "Animais Fantásticos",
+    tags: ["HTML", "CSS", "JavaScript"],
+    description:
+      "Rede social para troca e compartilhamento de ROM's e ISO's hoje não mais distribuídas comercialmente, de grande utilidade para colecionadores e entusiastas.",
+    image: "/images/animais-fantasticos.png",
+    link: "#",
+  },
+  {
+    title: "Real Sim State",
+    tags: ["Astro", "React", "MySQL"],
+    description:
+      "Site de imobiliária contando com uma vitrine de imoveis para venda além de dashboards para adminsitradores e corretores administrarem não apenas imoveis e associados, mas dados sobre a empresa.",
+    image: "/images/real-sim-state.png",
+    link: "#",
+  },
+];
+---
+
+<section class="projects-section" id="projetos">
+  <div class="projects-container">
+    <div class="projects-header">
+      <h2>Projetos</h2>
+    </div>
+    <div class="projects-list">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 6rem 4rem;
+  }
+
+  .projects-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .projects-header h2 {
+    font-family: var(--font-main);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000000;
+    text-align: center;
+  }
+
+  .projects-list {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+  }
+
+  .projects-list :global(.project-item:nth-child(even)) {
+    flex-direction: row-reverse;
+  }
+
+  @media (max-width: 850px) {
+    .projects-list {
+      gap: 4rem;
+    }
+  }
+</style>

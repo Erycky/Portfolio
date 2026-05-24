@@ -1,0 +1,100 @@
+---
+// src/components/Header.astro
+---
+
+<header class="header">
+  <div class="logo">
+    <span class="brackets">&lt;</span>
+    <span class="logo-text">Erycky</span>
+    <span class="brackets">&gt;</span>
+  </div>
+
+  <nav class="nav">
+    <a href="#sobre" class="nav-link">sobre</a>
+    <a href="#formacao" class="nav-link">formação</a>
+    <a href="#projetos" class="nav-link">projetos</a>
+    <a href="#contato" class="nav-link">contato</a>
+  </nav>
+
+  <a href="#contato" class="btn-talk"> Vamos conversar </a>
+</header>
+
+<style>
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Estilização do Logo */
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .brackets {
+    color: var(--color-primary);
+  }
+
+  .logo-text {
+    color: var(--color-text);
+  }
+
+  /* Menu de Navegação */
+  .nav {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    color: var(--color-text);
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  /* Botão Vamos Conversar */
+  .btn-talk {
+    background-color: var(--color-primary);
+    color: #000000;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #000000;
+    box-shadow: 4px 4px 0px #000000;
+    transition: all 0.2s ease;
+    text-transform: lowercase; /* Para manter o estilo sutil do design */
+  }
+
+  .btn-talk:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000000;
+  }
+
+  .btn-talk:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000000;
+  }
+
+  /* Responsividade Básica */
+  @media (max-width: 768px) {
+    .header {
+      padding: 1.5rem 2rem;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .nav {
+      gap: 1.25rem;
+    }
+  }
+</style>
