@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless'; // Importa o adaptador da Vercel
+import vercel from '@astrojs/vercel'; // <- REMOVA o "/serverless" daqui, deixe só assim
 
 export default defineConfig({
-  // Modifica a saída para 'server' (tudo roda no servidor) ou 'hybrid'
   output: 'server', 
   adapter: vercel(),
 });
