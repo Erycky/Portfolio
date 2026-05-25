@@ -1,6 +1,4 @@
 ---
-// src/components/Formation.astro
-
 const courses = [
   {
     title: "Análise e Desenvolvimento de Sistemas",
@@ -75,7 +73,6 @@ const courses = [
     gap: 3.5rem;
   }
 
-  /* Cabeçalho centralizado conforme image_81b6c0.png */
   .formation-header {
     text-align: center;
   }
@@ -95,7 +92,6 @@ const courses = [
     font-weight: 500;
   }
 
-  /* Lista de blocos horizontais */
   .formation-list {
     width: 100%;
     max-width: 900px;
@@ -104,7 +100,6 @@ const courses = [
     gap: 1.5rem;
   }
 
-  /* Estilo Padrão para TODOS os cards (Branco com borda e texto pretos) */
   .formation-card {
     background-color: #ffffff;
     border: 3px solid #000000;
@@ -114,14 +109,12 @@ const courses = [
     position: relative;
     cursor: pointer;
     box-shadow: 0px 0px 0px #000000;
-    /* Atualizado: adicionado suporte suave para transformações e sombras brutais */
     transition:
       background-color 0.2s ease,
       transform 0.2s ease,
       box-shadow 0.2s ease;
   }
 
-  /* Bloco do Ícone Quadrado Neutro */
   .icon-block {
     background-color: #000000;
     color: #ffffff;
@@ -136,13 +129,11 @@ const courses = [
       color 0.2s ease;
   }
 
-  /* Ícone com traços finos e elegantes */
   .grad-icon {
     width: 24px;
     height: 24px;
   }
 
-  /* Textos do Card */
   .card-info {
     flex: 1;
     display: flex;
@@ -169,7 +160,6 @@ const courses = [
     transition: color 0.2s ease;
   }
 
-  /* Ano na Extremidade Direita */
   .card-year {
     font-family: var(--font-main);
     font-size: 1.5rem;
@@ -179,20 +169,15 @@ const courses = [
     transition: color 0.2s ease;
   }
 
-  /* ==========================================================================
-     HOVER DINÂMICO: Transforma qualquer card no padrão da image_81b6c0.png
-     Efeito de elevação adicionado!
-     ========================================================================== */
   .formation-card:hover {
     background-color: #000000;
-    /* Atualizado: Desloca o bloco para cima e projeta a sombra preta clássica */
     transform: translate(-4px, -4px);
     box-shadow: 6px 6px 0px #000000;
   }
 
   .formation-card:hover .icon-block {
-    background-color: var(--color-primary); /* Caixinha fica laranja #FCA100 */
-    color: #000000; /* Ícone fino fica preto em cima do laranja */
+    background-color: var(--color-primary);
+    color: #000000;
   }
 
   .formation-card:hover .course-title {
@@ -204,10 +189,9 @@ const courses = [
   }
 
   .formation-card:hover .card-year {
-    color: var(--color-primary); /* O ano acende no seu laranja conceitual */
+    color: var(--color-primary);
   }
 
-  /* Responsividade */
   @media (max-width: 640px) {
     .formation-card {
       flex-direction: column;
@@ -216,7 +200,6 @@ const courses = [
       gap: 1rem;
     }
 
-    /* Reseta o deslocamento no mobile se preferir evitar problemas de toque em telas pequenas */
     .formation-card:hover {
       transform: none;
       box-shadow: none;

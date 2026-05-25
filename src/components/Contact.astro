@@ -1,7 +1,3 @@
----
-// src/components/Contact.astro
----
-
 <section class="contact-section" id="contato">
   <div class="contact-container">
     <div class="contact-header">
@@ -74,11 +70,10 @@
   const btnSubmit = document.getElementById("btn-submit") as HTMLButtonElement;
 
   form?.addEventListener("submit", async (e) => {
-    e.preventDefault(); // Impede o refresh padrão da página
+    e.preventDefault();
 
     if (!statusBox || !btnSubmit) return;
 
-    // Configura o estado de carregamento
     statusBox.textContent = "⏳ Enviando mensagem...";
     statusBox.className = "status-box loading";
     btnSubmit.disabled = true;
@@ -97,7 +92,7 @@
       if (response.ok) {
         statusBox.textContent = "✨ Mensagem enviada com sucesso!";
         statusBox.className = "status-box success";
-        form.reset(); // Limpa os campos do formulário
+        form.reset();
       } else {
         statusBox.textContent = `❌ Erro: ${result.message || "Falha ao enviar"}`;
         statusBox.className = "status-box error";
@@ -107,7 +102,6 @@
         "❌ Houve um erro ao tentar conectar com o servidor.";
       statusBox.className = "status-box error";
     } finally {
-      // Restaura o botão de enviar
       btnSubmit.disabled = false;
       btnSubmit.style.opacity = "1";
     }
@@ -119,7 +113,7 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 6rem 4rem 8rem 4rem; /* Margem inferior maior por ser o fim da página */
+    padding: 6rem 4rem 8rem 4rem;
   }
 
   .contact-container {
@@ -129,7 +123,6 @@
     gap: 4rem;
   }
 
-  /* Cabeçalho */
   .contact-header {
     text-align: center;
   }
@@ -149,7 +142,6 @@
     color: #333333;
   }
 
-  /* Envoltório do Conteúdo (Flex para alinhar setas e form lado a lado) */
   .contact-content-wrapper {
     display: flex;
     align-items: center;
@@ -159,28 +151,25 @@
     gap: 3rem;
   }
 
-  /* Setas Laterais Laranjas Gigantes */
   .side-arrow {
     font-family: var(--font-main);
     font-size: 4rem;
     font-weight: 900;
-    color: var(--color-primary); /* Teu laranja #FCA100 */
+    color: var(--color-primary);
     user-select: none;
     letter-spacing: -5px;
     display: flex;
     align-items: center;
   }
 
-  /* Estrutura do Formulário Central */
   .contact-form {
     flex: 1;
-    max-width: 500px; /* Mantém o formulário compacto exatamente como no mockup */
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
   }
 
-  /* Campos de Input e Textarea neobrutalistas */
   .form-group input,
   .form-group textarea {
     width: 100%;
@@ -197,26 +186,22 @@
       transform 0.2s ease;
   }
 
-  /* Placeholder preto e nítido conforme imagem */
   .form-group input::placeholder,
   .form-group textarea::placeholder {
     color: #000000;
     opacity: 1;
   }
 
-  /* Pequeno efeito de foco para guiar o usuário */
   .form-group input:focus,
   .form-group textarea:focus {
     transform: translate(-2px, -2px);
     box-shadow: 4px 4px 0px #000000;
   }
 
-  /* Textarea sem resize feio para não quebrar o layout */
   .form-group textarea {
     resize: none;
   }
 
-  /* Botão Enviar Marcante */
   .btn-submit {
     width: 100%;
     font-family: var(--font-main);
@@ -232,7 +217,6 @@
       box-shadow 0.1s ease;
   }
 
-  /* Clique com feedback mecânico pesado */
   .btn-submit:hover {
     transform: translate(-3px, -3px);
     box-shadow: 5px 5px 0px #000000;
@@ -243,7 +227,6 @@
     box-shadow: 0px 0px 0px #000000;
   }
 
-  /* Caixa de Status do Envio com Estilo Brutalista */
   .status-box {
     width: 100%;
     padding: 1rem;
@@ -267,14 +250,13 @@
   }
 
   .status-box.success {
-    background-color: #8eff8e; /* Verde limão brutalista */
+    background-color: #8eff8e;
   }
 
   .status-box.error {
-    background-color: #ff8e8e; /* Vermelho pastel brutalista */
+    background-color: #ff8e8e;
   }
 
-  /* Responsividade */
   @media (max-width: 768px) {
     .side-arrow {
       display: none;

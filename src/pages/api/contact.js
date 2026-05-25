@@ -1,6 +1,5 @@
 import { Resend } from 'resend';
 
-// Inicializa o Resend buscando a chave de forma segura das variáveis de ambiente
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const prerender = false;
@@ -22,8 +21,8 @@ export async function POST({ request }) {
 
     // DISPARO DO E-MAIL
     await resend.emails.send({
-      from: 'Portfolio <onboarding@resend.dev>', // No plano grátis fica esse remetente padrão deles
-      to: 'eryckyrayner@gmail.com',            // O SEU GMAIL onde você quer receber o aviso
+      from: 'Portfolio <onboarding@resend.dev>', 
+      to: 'eryckyrayner@gmail.com',
       subject: `💼 Contato Portfólio: ${subject}`,
       html: `
         <div style="font-family: sans-serif; padding: 20px; color: #333;">

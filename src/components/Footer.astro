@@ -1,7 +1,3 @@
----
-// src/components/Footer.astro
----
-
 <footer class="footer-section">
   <div class="footer-container">
     <a href="mailto:eryckyrayner@gmail.com" class="footer-card">
@@ -80,17 +76,16 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 4rem 6rem 4rem; /* Mantém o alinhamento das seções de cima */
+    padding: 0 4rem 6rem 4rem;
   }
 
   .footer-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas idênticas lado a lado */
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     width: 100%;
   }
 
-  /* Base do Card Preto Neobrutalista */
   .footer-card {
     background-color: #000000;
     border: 3px solid #000000;
@@ -100,28 +95,25 @@
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    text-decoration: none; /* Remove underline dos links */
+    text-decoration: none;
     color: #ffffff;
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;
   }
 
-  /* Corrigido: Agora aplica o hover em TODOS os cards (tanto <a> quanto <div>) */
   .footer-card:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 6px 6px 0px #000000; /* Sombra laranja de destaque */
+    box-shadow: 6px 6px 0px #000000;
   }
 
-  /* Mantém o cursor padrão na div para indicar que ela não é clicável */
   div.footer-card:hover {
     cursor: default;
   }
 
-  /* Círculo do Ícone Laranja Metódico */
   .icon-circle {
-    background-color: var(--color-primary); /* Teu laranja #FCA100 */
-    color: #000000; /* Ícone preto interno */
+    background-color: var(--color-primary);
+    color: #000000;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -135,7 +127,6 @@
     height: 26px;
   }
 
-  /* Textos internos */
   .location-wrapper {
     display: flex;
     flex-direction: column;
@@ -146,13 +137,13 @@
   .footer-text {
     font-family: var(--font-main);
     font-size: 1.2rem;
-    font-weight: 800; /* Letra pesada idêntica à imagem */
+    font-weight: 800;
     text-align: center;
     line-height: 1.3;
   }
 
   .footer-text .text-light {
-    font-weight: 600; /* Deixa o e-mail um pouquinho menos denso para legibilidade */
+    font-weight: 600;
   }
 
   .footer-subtext {
@@ -162,10 +153,9 @@
     color: #aaaaaa;
   }
 
-  /* Responsividade fluída para mobile e tablets */
   @media (max-width: 968px) {
     .footer-container {
-      grid-template-columns: 1fr; /* Empilha os blocos verticalmente */
+      grid-template-columns: 1fr;
       gap: 1.5rem;
     }
 

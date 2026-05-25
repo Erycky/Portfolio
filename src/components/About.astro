@@ -1,10 +1,5 @@
----
-// src/components/About.astro
----
-
 <section class="about-section" id="sobre">
   <div class="about-container">
-    <!-- Coluna da Esquerda: Frase de Impacto -->
     <div class="about-left">
       <div class="profile-tag">
         <span class="orange-brackets">&lt; &gt;</span> Erycky Rayner
@@ -15,7 +10,6 @@
       </h2>
     </div>
 
-    <!-- Coluna da Direita: Manifesto Técnico -->
     <div class="about-right">
       <h3 class="sub-headline-text">
         Cada linha de código HTML, cada estilo em CSS e cada interação em
@@ -30,7 +24,6 @@
     </div>
   </div>
 
-  <!-- Divisor Sutil Laranja no final da seção -->
   <div class="about-divider">
     <span>&lt; &gt;</span>
   </div>
@@ -41,7 +34,7 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 8rem 4rem 4rem 4rem; /* Mais respiro para ficar clean */
+    padding: 8rem 4rem 4rem 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,13 +42,12 @@
 
   .about-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas limpas divididas ao meio */
+    grid-template-columns: 1fr 1fr;
     gap: 4rem;
     width: 100%;
     align-items: start;
   }
 
-  /* Coluna Esquerda */
   .about-left {
     display: flex;
     flex-direction: column;
@@ -70,7 +62,7 @@
   }
 
   .orange-brackets {
-    color: var(--color-primary); /* Teu laranja #FCA100 */
+    color: var(--color-primary);
     font-weight: 700;
     margin-right: 0.25rem;
   }
@@ -83,12 +75,11 @@
     color: #000000;
   }
 
-  /* Coluna Direita */
   .about-right {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding-top: 2.5rem; /* Alinha um pouco mais abaixo para equilibrar com o topo da esquerda */
+    padding-top: 2.5rem;
   }
 
   .sub-headline-text {
@@ -107,26 +98,24 @@
     color: #333333;
   }
 
-  /* Divisor Sutil Laranja < > */
   .about-divider {
     margin-top: 6rem;
     font-size: 2rem;
     font-weight: 900;
-    color: var(--color-primary); /* Teu laranja #FCA100 */
+    color: var(--color-primary);
     letter-spacing: 2px;
     text-align: center;
     width: 100%;
   }
 
-  /* Responsividade para telas menores */
   @media (max-width: 968px) {
     .about-container {
-      grid-template-columns: 1fr; /* Vira uma coluna só no mobile */
+      grid-template-columns: 1fr;
       gap: 3rem;
     }
 
     .about-right {
-      padding-top: 0; /* Reseta o recuo no mobile */
+      padding-top: 0;
     }
 
     .headline-text {

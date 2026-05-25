@@ -1,6 +1,4 @@
 ---
-// src/layouts/BaseLayout.astro
-
 interface Props {
   title?: string;
   description?: string;
@@ -71,8 +69,6 @@ const {
     font-family: var(--font-main);
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
-
-    /* Mantivemos 40s para ser uma viagem suave e não dar tontura, mas agora com movimento caótico */
     animation: moveTopographyMaluco 40s ease-in-out infinite;
   }
 
@@ -97,27 +93,20 @@ const {
     display: block;
   }
 
-  /* ==========================================================================
-     ANIMAÇÃO TOPOGRAFIA ALEATÓRIA (Efeito de Flutuação Ampla)
-     ========================================================================== */
   @keyframes moveTopographyMaluco {
     0% {
       background-position: 0px 0px;
     }
     25% {
-      /* Vai para a diagonal inferior esquerda */
       background-position: -300px 150px;
     }
     50% {
-      /* Sobe reto pra direita */
       background-position: -600px -300px;
     }
     75% {
-      /* Dá uma guinada pro lado oposto */
       background-position: -150px -450px;
     }
     100% {
-      /* Retorna perfeitamente para a origem de repetição do SVG, fechando o loop sem cortes */
       background-position: -600px -600px;
     }
   }

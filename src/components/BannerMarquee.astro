@@ -1,9 +1,4 @@
----
-// src/components/BannerMarquee.astro
----
-
 <div class="marquee-wrapper">
-  <!-- Criamos duas divs idênticas. Ambas rodam a animação juntas, coladas uma na outra -->
   <div class="marquee-content">
     <span>HTML</span>
     <span class="marquee-sep">/</span>
@@ -21,7 +16,6 @@
     <span class="marquee-sep">/</span>
   </div>
 
-  <!-- A cópia idêntica serve para tapar o buraco no desktop enquanto a primeira se move -->
   <div class="marquee-content" aria-hidden="true">
     <span>HTML</span>
     <span class="marquee-sep">/</span>
@@ -48,7 +42,7 @@
     border-bottom: 3px solid #000000;
     padding: 1.2rem 0;
     overflow: hidden;
-    display: flex; /* Faz os dois blocos internos sentarem um ao lado do outro */
+    display: flex;
     user-select: none;
     width: 100%;
   }
@@ -57,7 +51,6 @@
     display: flex;
     gap: 2rem;
     white-space: nowrap;
-    /* Animação sincronizada para os dois blocos */
     animation: marquee-scroll 25s linear infinite;
     font-family: var(--font-main);
     font-size: 1.6rem;
@@ -65,19 +58,15 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     align-items: center;
-    /* Garante que cada bloco tenha espaço de sobra para esticar */
     padding-right: 2rem;
   }
 
-  /* O pulo do gato: a animação move o bloco de 0 a -100% */
   @keyframes marquee-scroll {
     0% {
       transform: translateX(0%);
     }
     100% {
-      transform: translateX(
-        -100%
-      ); /* Desloca o bloco inteiro, trazendo o reserva na mesma velocidade */
+      transform: translateX(-100%);
     }
   }
 
