@@ -1,32 +1,31 @@
-export const prereder = false; // Garante que essa rota rode no servidor da Vercel
+export const prerender = false; // IMPORTANTE: com 'n', diz para o Astro NÃO gerar essa página estática
 
 export async function POST({ request }) {
   try {
     const data = await request.formData();
     const name = data.get("name");
+    const subject = data.get("subject"); // Pegando o assunto também
     const email = data.get("email");
     const message = data.get("message");
 
-    // Validação simples dos campos
     if (!name || !email || !message) {
       return new Response(
-        JSON.stringify({ message: "Por favor, preencha todos os campos." }),
-        { status: 400 }
+        JSON.stringify({ message: "Por favor, preencha os campos obrigatórios." }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
 
-    // AQUI: A Vercel recebe os dados. 
-    // No futuro, se quiser disparar um e-mail para você via Resend ou salvar num banco:
-    console.log("Novo contato recebido:", { name, email, message });
+    // No terminal da Vercel (Logs), você vai ver esse objeto estalando:
+    console.log("Contato Recebido:", { name, subject, email, message });
 
     return new Response(
-      JSON.stringify({ message: "Mensagem enviada com sucesso!" }),
-      { status: 200 }
-    )
+      JSON.stringify({ message: "Mensagem recebida com sucesso!" }),
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
   } catch (error) {
     return new Response(
-      JSON.stringify({ message: "Erro interno no servidor." }),
-      { status: 500 }
+      JSON.stringify({ message: "Erro interno ao processar o formulário." }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
 }
