@@ -1,31 +1,52 @@
-export const prerender = false; // IMPORTANTE: com 'n', diz para o Astro NÃO gerar essa página estática
+import { Resend } from 'resend';
+
+// Inicializa o Resend buscando a chave de forma segura das variáveis de ambiente
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export const prerender = false;
 
 export async function POST({ request }) {
   try {
     const data = await request.formData();
     const name = data.get("name");
-    const subject = data.get("subject"); // Pegando o assunto também
+    const subject = data.get("subject");
     const email = data.get("email");
     const message = data.get("message");
 
     if (!name || !email || !message) {
       return new Response(
         JSON.stringify({ message: "Por favor, preencha os campos obrigatórios." }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
+        { status: 400 }
       );
     }
 
-    // No terminal da Vercel (Logs), você vai ver esse objeto estalando:
-    console.log("Contato Recebido:", { name, subject, email, message });
+    // DISPARO DO E-MAIL
+    await resend.emails.send({
+      from: 'Portfolio <onboarding@resend.dev>', // No plano grátis fica esse remetente padrão deles
+      to: 'eryckyrayner@gmail.com',            // O SEU GMAIL onde você quer receber o aviso
+      subject: `💼 Contato Portfólio: ${subject}`,
+      html: `
+        <div style="font-family: sans-serif; padding: 20px; color: #333;">
+          <h2 style="color: #000; border-bottom: 2px solid #000; padding-bottom: 10px;">Novo contato do Portfólio</h2>
+          <p><strong>Nome:</strong> ${name}</p>
+          <p><strong>E-mail de quem mandou:</strong> ${email}</p>
+          <p><strong>Assunto:</strong> ${subject}</p>
+          <div style="margin-top: 20px; padding: 15px; background: #f5f5f5; border-left: 4px solid #FCA100;">
+            <p><strong>Mensagem:</strong></p>
+            <p style="white-space: pre-wrap;">${message}</p>
+          </div>
+        </div>
+      `,
+    });
 
     return new Response(
-      JSON.stringify({ message: "Mensagem recebida com sucesso!" }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
+      JSON.stringify({ message: "Mensagem enviada com sucesso!" }),
+      { status: 200 }
     );
   } catch (error) {
     return new Response(
-      JSON.stringify({ message: "Erro interno ao processar o formulário." }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
+      JSON.stringify({ message: "Erro ao tentar enviar o e-mail." }),
+      { status: 500 }
     );
   }
 }
