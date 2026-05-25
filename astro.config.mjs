@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel'; // <- REMOVA o "/serverless" daqui, deixe só assim
+import vercel from '@astrojs/vercel'; 
 
 export default defineConfig({
   output: 'server', 
