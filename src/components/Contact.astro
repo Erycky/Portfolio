@@ -14,7 +14,7 @@
         <span>&lt; &gt;</span>
       </div>
 
-      <form class="contact-form" action="#" method="POST">
+      <form class="contact-form" id="contact-form">
         <div class="form-group">
           <input
             type="text"
@@ -54,7 +54,11 @@
             required></textarea>
         </div>
 
-        <button type="submit" class="btn-submit"> Enviar </button>
+        <button type="submit" class="btn-submit" id="btn-submit">
+          Enviar
+        </button>
+
+        <div id="form-status" class="status-box hidden"></div>
       </form>
 
       <div class="side-arrow right-arrow" aria-hidden="true">
@@ -63,6 +67,52 @@
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const statusBox = document.getElementById("form-status");
+  const btnSubmit = document.getElementById("btn-submit") as HTMLButtonElement;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault(); // Impede o refresh padrão da página
+
+    if (!statusBox || !btnSubmit) return;
+
+    // Configura o estado de carregamento
+    statusBox.textContent = "⏳ Enviando mensagem...";
+    statusBox.className = "status-box loading";
+    btnSubmit.disabled = true;
+    btnSubmit.style.opacity = "0.7";
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        statusBox.textContent = "✨ Mensagem enviada com sucesso!";
+        statusBox.className = "status-box success";
+        form.reset(); // Limpa os campos do formulário
+      } else {
+        statusBox.textContent = `❌ Erro: ${result.message || "Falha ao enviar"}`;
+        statusBox.className = "status-box error";
+      }
+    } catch (error) {
+      statusBox.textContent =
+        "❌ Houve um erro ao tentar conectar com o servidor.";
+      statusBox.className = "status-box error";
+    } finally {
+      // Restaura o botão de enviar
+      btnSubmit.disabled = false;
+      btnSubmit.style.opacity = "1";
+    }
+  });
+</script>
 
 <style>
   .contact-section {
@@ -79,7 +129,7 @@
     gap: 4rem;
   }
 
-  /* Cabeçalho igual à imagem */
+  /* Cabeçalho */
   .contact-header {
     text-align: center;
   }
@@ -193,10 +243,41 @@
     box-shadow: 0px 0px 0px #000000;
   }
 
-  /* Responsividade para sumir com as setas em telas pequenas e não apertar o form */
+  /* Caixa de Status do Envio com Estilo Brutalista */
+  .status-box {
+    width: 100%;
+    padding: 1rem;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
+    background-color: #ffffff;
+    border: 2.5px solid #000000;
+    text-align: center;
+    box-shadow: 4px 4px 0px #000000;
+  }
+
+  .status-box.hidden {
+    display: none;
+  }
+
+  .status-box.loading {
+    border-color: #000000;
+    background-color: #f0f0f0;
+  }
+
+  .status-box.success {
+    background-color: #8eff8e; /* Verde limão brutalista */
+  }
+
+  .status-box.error {
+    background-color: #ff8e8e; /* Vermelho pastel brutalista */
+  }
+
+  /* Responsividade */
   @media (max-width: 768px) {
     .side-arrow {
-      display: none; /* Esconde as setas laranjas no mobile/tablet para priorizar o input */
+      display: none;
     }
 
     .contact-section {
