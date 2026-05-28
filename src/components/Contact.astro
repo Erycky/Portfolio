@@ -1,0 +1,273 @@
+<section class="contact-section" id="contato">
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2>Vamos conversar</h2>
+      <p>Disponível para trabalhos, projetos e conversas...</p>
+    </div>
+
+    <div class="contact-content-wrapper">
+      <div class="side-arrow left-arrow" aria-hidden="true">
+        <span>&lt; &gt;</span>
+      </div>
+
+      <form class="contact-form" id="contact-form">
+        <div class="form-group">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Nome*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="Assunto*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Mensagem*"
+            required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit">
+          Enviar
+        </button>
+
+        <div id="form-status" class="status-box hidden"></div>
+      </form>
+
+      <div class="side-arrow right-arrow" aria-hidden="true">
+        <span>&lt; &gt;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const statusBox = document.getElementById("form-status");
+  const btnSubmit = document.getElementById("btn-submit") as HTMLButtonElement;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!statusBox || !btnSubmit) return;
+
+    statusBox.textContent = "⏳ Enviando mensagem...";
+    statusBox.className = "status-box loading";
+    btnSubmit.disabled = true;
+    btnSubmit.style.opacity = "0.7";
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        statusBox.textContent = "✨ Mensagem enviada com sucesso!";
+        statusBox.className = "status-box success";
+        form.reset();
+      } else {
+        statusBox.textContent = `❌ Erro: ${result.message || "Falha ao enviar"}`;
+        statusBox.className = "status-box error";
+      }
+    } catch (error) {
+      statusBox.textContent =
+        "❌ Houve um erro ao tentar conectar com o servidor.";
+      statusBox.className = "status-box error";
+    } finally {
+      btnSubmit.disabled = false;
+      btnSubmit.style.opacity = "1";
+    }
+  });
+</script>
+
+<style>
+  .contact-section {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 6rem 4rem 8rem 4rem;
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .contact-header {
+    text-align: center;
+  }
+
+  .contact-header h2 {
+    font-family: var(--font-main);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-header p {
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333333;
+  }
+
+  .contact-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    gap: 3rem;
+  }
+
+  .side-arrow {
+    font-family: var(--font-main);
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    user-select: none;
+    letter-spacing: -5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-form {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #000000;
+    background-color: #ffffff;
+    border: 2.5px solid #000000;
+    outline: none;
+    transition:
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #000000;
+    opacity: 1;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #000000;
+  }
+
+  .form-group textarea {
+    resize: none;
+  }
+
+  .btn-submit {
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #000000;
+    background-color: var(--color-primary); /* Laranja #FCA100 */
+    border: 2.5px solid #000000;
+    padding: 1rem;
+    cursor: pointer;
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
+  }
+
+  .btn-submit:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 5px 5px 0px #000000;
+  }
+
+  .btn-submit:active {
+    transform: translate(0, 0);
+    box-shadow: 0px 0px 0px #000000;
+  }
+
+  .status-box {
+    width: 100%;
+    padding: 1rem;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
+    background-color: #ffffff;
+    border: 2.5px solid #000000;
+    text-align: center;
+    box-shadow: 4px 4px 0px #000000;
+  }
+
+  .status-box.hidden {
+    display: none;
+  }
+
+  .status-box.loading {
+    border-color: #000000;
+    background-color: #f0f0f0;
+  }
+
+  .status-box.success {
+    background-color: #8eff8e;
+  }
+
+  .status-box.error {
+    background-color: #ff8e8e;
+  }
+
+  @media (max-width: 768px) {
+    .side-arrow {
+      display: none;
+    }
+
+    .contact-section {
+      padding: 4rem 2rem 6rem 2rem;
+    }
+
+    .contact-content-wrapper {
+      gap: 0;
+    }
+  }
+</style>

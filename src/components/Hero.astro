@@ -1,0 +1,217 @@
+<section class="hero-section" id="sobre">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Olá, me chamo Erycky <br />
+        um Desenvolvedor <span class="highlight">Front End</span>
+        <br />
+        localizado em Santa Cruz
+      </h1>
+
+      <div class="tech-tags">
+        <span class="tag">html</span>
+        <span class="tag-separator">/</span>
+        <span class="tag">css</span>
+        <span class="tag-separator">/</span>
+        <span class="tag">javascript</span>
+        <span class="tag-separator">/</span>
+        <span class="tag">astro</span>
+        <span class="tag-separator">/</span>
+        <span class="tag">react</span>
+      </div>
+
+      <div class="hero-buttons-block">
+        <a href="#projetos" class="btn-block-left">Tem interesse?</a>
+        <a href="#contato" class="btn-block-right">Vamos conversar</a>
+      </div>
+    </div>
+
+    <div class="hero-image-wrapper">
+      <div class="photo-detail detail-left">&lt;</div>
+      <div class="image-card">
+        <img
+          src="/images/perfil.jpg"
+          alt="Foto de perfil de Erycky"
+          class="profile-img"
+        />
+      </div>
+
+      <div class="photo-detail detail-right">&gt;</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 4rem 4rem 6rem 4rem;
+  }
+
+  .hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight {
+    color: var(--color-primary);
+  }
+
+  .tech-tags {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f0ede9;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tag {
+    color: #555555;
+    font-weight: 500;
+  }
+
+  .tag-separator {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .hero-buttons-block {
+    display: inline-flex;
+    background-color: #000000;
+    border: 2px solid #000000;
+    box-shadow: 4px 4px 0px #000000;
+    overflow: hidden;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .hero-buttons-block:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000000;
+  }
+
+  .hero-buttons-block:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000000;
+  }
+
+  .btn-block-left,
+  .btn-block-right {
+    font-family: var(--font-main);
+    font-weight: 700;
+    padding: 0.85rem 1.75rem;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .btn-block-left {
+    background-color: #000000;
+    color: #ffffff;
+    border-right: 2px solid #000000;
+  }
+
+  .btn-block-right {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .btn-block-right:hover {
+    background-color: var(--color-primary);
+    color: #000000;
+  }
+
+  .btn-block-left:hover {
+    background-color: #1a1a1a;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-card {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    padding: 0.5rem;
+    box-shadow: 8px 8px 0px #000000;
+    width: 280px;
+    height: 320px;
+    z-index: 2;
+  }
+
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+  }
+
+  .photo-detail {
+    position: absolute;
+    background-color: #000000;
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    user-select: none;
+    z-index: 3;
+  }
+
+  .detail-left {
+    left: -16px;
+    bottom: 24px;
+  }
+
+  .detail-right {
+    right: -16px;
+    top: 24px;
+  }
+
+  @media (max-width: 968px) {
+    .hero-container {
+      flex-direction: column-reverse;
+      text-align: center;
+      gap: 3rem;
+    }
+
+    .hero-content {
+      align-items: center;
+    }
+
+    .hero-section {
+      padding: 2rem 2rem 4rem 2rem;
+    }
+  }
+</style>

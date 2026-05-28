@@ -1,0 +1,84 @@
+<div class="marquee-wrapper">
+  <div class="marquee-content">
+    <span>HTML</span>
+    <span class="marquee-sep">/</span>
+    <span>CSS</span>
+    <span class="marquee-sep">/</span>
+    <span>JAVASCRIPT</span>
+    <span class="marquee-sep">/</span>
+    <span>ASTRO</span>
+    <span class="marquee-sep">/</span>
+    <span>REACT</span>
+    <span class="marquee-sep">/</span>
+    <span>FIGMA</span>
+    <span class="marquee-sep">/</span>
+    <span>UI DESIGN</span>
+    <span class="marquee-sep">/</span>
+  </div>
+
+  <div class="marquee-content" aria-hidden="true">
+    <span>HTML</span>
+    <span class="marquee-sep">/</span>
+    <span>CSS</span>
+    <span class="marquee-sep">/</span>
+    <span>JAVASCRIPT</span>
+    <span class="marquee-sep">/</span>
+    <span>ASTRO</span>
+    <span class="marquee-sep">/</span>
+    <span>REACT</span>
+    <span class="marquee-sep">/</span>
+    <span>FIGMA</span>
+    <span class="marquee-sep">/</span>
+    <span>UI DESIGN</span>
+    <span class="marquee-sep">/</span>
+  </div>
+</div>
+
+<style>
+  .marquee-wrapper {
+    background-color: #000000;
+    color: #ffffff;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+    padding: 1.2rem 0;
+    overflow: hidden;
+    display: flex;
+    user-select: none;
+    width: 100%;
+  }
+
+  .marquee-content {
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    animation: marquee-scroll 25s linear infinite;
+    font-family: var(--font-main);
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-items: center;
+    padding-right: 2rem;
+  }
+
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .marquee-sep {
+    color: var(--color-primary);
+    font-weight: 900;
+  }
+
+  @media (max-width: 768px) {
+    .marquee-content {
+      font-size: 1.2rem;
+      animation-duration: 15s;
+    }
+  }
+</style>

@@ -1,0 +1,113 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Erycky Rayner | Desenvolvedor Front End",
+  description = "Portfólio de Erycky Rayner, Desenvolvedor Front End.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-bg: #fcfbfa;
+    --color-text: #000000;
+    --color-primary: #fca100;
+    --font-main: "Fira Sans", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    background-image: url("/images/topography.svg");
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-size: 600px auto;
+    color: var(--color-text);
+    font-family: var(--font-main);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    animation: moveTopographyMaluco 40s ease-in-out infinite;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  strong,
+  .font-bold {
+    font-family: var(--font-main);
+    font-weight: 700;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @keyframes moveTopographyMaluco {
+    0% {
+      background-position: 0px 0px;
+    }
+    25% {
+      background-position: -300px 150px;
+    }
+    50% {
+      background-position: -600px -300px;
+    }
+    75% {
+      background-position: -150px -450px;
+    }
+    100% {
+      background-position: -600px -600px;
+    }
+  }
+</style>
